@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="accueil.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RollerMarket - Accueil</title>
+    <link rel="icon" type="image/png" href="rollercoin-logo.png">
+    <details>
+        <summary></summary>
+        <nav class="menu">
+          <a href="index.html">Accueil</a>
+          <a href="Offres.html">Meilleures offres</a>
+          <a href="Calculator.html">Rollercoin calculator</a>
+          <a href="event.html">évènement</a>
+          <a href="math.html">Calculs - renta/prix</a>
+          <a href="Apropos.html">À propos</a>
+        </nav>
+      </details>
+</head>
+<body>
+    <h1 data-value="THE ROLLERMARKET">THE ROLLERMARKET</h1>
+
+<script>
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+let interval = null;
+
+document.querySelector("h1").onmouseover = event => {  
+  let iteration = 0;
+  
+  clearInterval(interval);
+  
+  interval = setInterval(() => {
+    event.target.innerText = event.target.innerText
+      .split("")
+      .map((letter, index) => {
+        if(index < iteration) {
+          return event.target.dataset.value[index];
+        }
+      
+        return letters[Math.floor(Math.random() * 26)]
+      })
+      .join("");
+    
+    if(iteration >= event.target.dataset.value.length){ 
+      clearInterval(interval);
+    }
+    
+    iteration += 1 / 3;
+  }, 15);
+}
+  </script>
+
+<div class="color-bar"></div>
+<script>
+  document.querySelector(".color-bar").style.backgroundColor = "#1E90FF";
+const rainbow = ["#9400D3", "#1E90FF"];
+let index = 0;
+
+setInterval(function() {
+  const colorBar = document.querySelector(".color-bar");
+  colorBar.style.backgroundColor = rainbow[index % rainbow.length];
+  index++;
+}, 750);
+</script>
+
+<div class="background-image"></div>
+
+
+
+
+</body>
+</html>
+
